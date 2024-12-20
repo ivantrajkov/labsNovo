@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add an event</title>
+</head>
+<body>
+<form th:action="@{/events/add}" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name" required>
+
+  <label>Description:</label>
+  <input type="text" name="description" required>
+
+  <label>Popularity Score:</label>
+  <input type="number" name="popularityScore" required>
+
+  <label>Location:</label>
+  <select name="id" required>
+    <option th:each="location : ${locations}"
+            th:value="${location.id}"
+            th:text="${location.name}">
+    </option>
+  </select>
+
+  <button type="submit">Add Event</button>
+</form>
+</body>
+</html>
